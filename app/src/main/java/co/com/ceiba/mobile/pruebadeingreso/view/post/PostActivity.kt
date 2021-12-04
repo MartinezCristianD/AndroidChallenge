@@ -2,10 +2,10 @@ package co.com.ceiba.mobile.pruebadeingreso.view.post
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.com.ceiba.mobile.pruebadeingreso.R
+import co.com.ceiba.mobile.pruebadeingreso.base.BaseActivity
 import co.com.ceiba.mobile.pruebadeingreso.models.Post
 import co.com.ceiba.mobile.pruebadeingreso.models.User
 import co.com.ceiba.mobile.pruebadeingreso.view.user.UserAdapter
@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PostActivity : AppCompatActivity() {
+class PostActivity : BaseActivity() {
 
     private val presenter: PostsPresenter = PostsPresenter()
 
@@ -39,8 +39,10 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun initPosts(userId: Int) {
+        setLoading(true)
         CoroutineScope(Dispatchers.Main).launch {
             recyclerViewStart(presenter.getPostById(userId))
+            setLoading(false)
         }
     }
 

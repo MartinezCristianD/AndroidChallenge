@@ -1,16 +1,16 @@
 package co.com.ceiba.mobile.pruebadeingreso.view.user
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.com.ceiba.mobile.pruebadeingreso.R
+import co.com.ceiba.mobile.pruebadeingreso.base.BaseActivity
 import co.com.ceiba.mobile.pruebadeingreso.models.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val presenter: UserPresenter = UserPresenter()
 
@@ -21,8 +21,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
+        setLoading(true)
         CoroutineScope(Dispatchers.Main).launch {
             recyclerViewStart(presenter.getUsers())
+            setLoading(false)
         }
     }
 
@@ -33,4 +35,5 @@ class MainActivity : AppCompatActivity() {
         val adapter = UserAdapter(userList)
         rvUsers.adapter = adapter
     }
+
 }
