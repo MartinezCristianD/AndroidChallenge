@@ -7,6 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApiConfiguration {
+
+    // Getting HttpClient needed to retrofit
     private fun getOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
@@ -14,6 +16,7 @@ class ApiConfiguration {
             .build()
     }
 
+    // Consume json with retrofit
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(URL_BASE)
@@ -22,6 +25,7 @@ class ApiConfiguration {
             .build()
     }
 
+    // Create api service
     fun getApiService(): ApiService {
         return getRetrofit().create(ApiService::class.java)
     }

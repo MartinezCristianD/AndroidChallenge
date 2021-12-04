@@ -9,6 +9,7 @@ class UserRepository {
 
     private val apiService = ApiConfiguration().getApiService()
 
+    // Getting the ArrayList of user from Api service
     suspend fun getUsersList(): ArrayList<User> = withContext(Dispatchers.IO) {
         apiService.getUsers()
     }

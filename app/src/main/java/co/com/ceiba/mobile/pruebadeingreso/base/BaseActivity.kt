@@ -7,6 +7,7 @@ import co.com.ceiba.mobile.pruebadeingreso.R
 abstract class BaseActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
 
+    //Dialog box message to wait on Api data load
     fun setLoading(isLoading: Boolean) {
         if (isLoading) {
             progressDialog = ProgressDialog.show(

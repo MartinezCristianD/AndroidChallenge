@@ -14,15 +14,18 @@ import co.com.ceiba.mobile.pruebadeingreso.view.post.PostActivity
 class UserAdapter(private val userList: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
+    //Constant creation
     companion object {
         const val USER_INFO = "USER_INFO"
     }
 
+    //Creation of blank layout for recyclerView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.user_list_item, parent, false))
     }
 
+    // Management and assignment of views
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(user: User) {
 
@@ -31,6 +34,7 @@ class UserAdapter(private val userList: ArrayList<User>) :
             view.findViewById<TextView>(R.id.email).text = user.email
             view.findViewById<Button>(R.id.btn_view_post).setOnClickListener {
 
+                //Send data and open PostActivity
                 val intent = Intent(view.context, PostActivity::class.java)
                 intent.putExtra(USER_INFO, user)
                 view.context.startActivity(intent)
@@ -39,10 +43,12 @@ class UserAdapter(private val userList: ArrayList<User>) :
 
     }
 
+    //Sending the object for views
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(userList[position])
     }
 
+    //Getting list size
     override fun getItemCount(): Int = userList.size
 
 }
