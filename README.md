@@ -1,5 +1,5 @@
-# Cristian Martinez
-## Android App
+# Android App
+## Cristian Martinez
 
 ### Tools:
 1. [Android Studio](https://developer.android.com/studio/) Android Studio Arctic Fox | 2020.3.1 Patch 2
@@ -22,9 +22,13 @@
 5. [AndroidX](https://developer.android.com/jetpack/androidx)
 
 ### Architecture
-MVP maneja la lógica por medio de el presentador de esta manera la vista se encarga se encarga unicamente de representar la información enviada desde el presentador;
-de esta manera organiza la distribución de archivos al dividir nuestra aplicación en componentes modulares, con propósitos mejor definidos.
+
+MVP handles the logic through the presenter in this way, the view is only responsible for representing the information sent from the presenter;
+organizes file distribution by dividing the application into modular components, with better defined purposes.
 
 * MVVP (Model-View-Presenter)
 
-![MVP]https://guelmimundoinfo.blogspot.com/2019/07/mvp-modelo-vista-presentador.html)
+![MVP](https://guelmimundoinfo.blogspot.com/2019/07/mvp-modelo-vista-presentador.html)
+
+### Screenshot
+![Screenshot](https://ibb.co/xYWCfCZ)
