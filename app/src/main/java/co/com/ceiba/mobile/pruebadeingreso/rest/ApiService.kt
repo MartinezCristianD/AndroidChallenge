@@ -10,11 +10,11 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET(GET_USERS)
-    suspend fun getUsers(): List<User>
+    suspend fun getUsers(): ArrayList<User>
 
     @GET(GET_POST_USER)
-    suspend fun getPost(): List<Post>
+    suspend fun getPost(): ArrayList<Post>
 
     @GET(GET_POST_USER)
-    suspend fun getPostById(@Query("userId") userId: Int): List<Post>
+    suspend fun getPostById(@Query("userId") userId: Int): ArrayList<Post>
 }
