@@ -11,7 +11,7 @@ import co.com.ceiba.mobile.pruebadeingreso.R
 import co.com.ceiba.mobile.pruebadeingreso.models.User
 import co.com.ceiba.mobile.pruebadeingreso.view.post.PostActivity
 
-class UserAdapter(private val userList: ArrayList<User>) :
+class UserAdapter(private var userList: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     //Constant creation
@@ -40,7 +40,6 @@ class UserAdapter(private val userList: ArrayList<User>) :
                 view.context.startActivity(intent)
             }
         }
-
     }
 
     //Sending the object for views

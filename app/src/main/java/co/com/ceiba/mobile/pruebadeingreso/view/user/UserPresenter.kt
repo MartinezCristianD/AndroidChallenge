@@ -6,7 +6,11 @@ class UserPresenter {
 
     private val userRepository = UserRepository()
 
-    // Getting users from repository
+    /**
+     * Getting users from repository
+     *
+     * @return User list
+     * */
     suspend fun getUsers() = userRepository.getUsersList()
 
 }
