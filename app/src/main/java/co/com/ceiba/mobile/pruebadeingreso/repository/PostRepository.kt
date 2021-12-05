@@ -9,7 +9,13 @@ class PostRepository {
 
     private val apiService = ApiConfiguration().getApiService()
 
-    // Get the ArrayList of publications from the Api service through the user id
+    /**
+     * Get the ArrayList of publications from the Api service through the user id
+     *
+     * @param userId to identify related posts
+     *
+     * @return list with posts from userID
+     * */
     suspend fun getPostsListById(userId: Int): ArrayList<Post>? = withContext(Dispatchers.IO) {
         try {
             apiService.getPostById(userId)
