@@ -10,9 +10,10 @@
 
 ### Libraries
 1. [Retrofit](https://square.github.io/retrofit/)
-3. [Okhttp](https://square.github.io/okhttp/)
-4. [Coroutines](https://developer.android.com/kotlin/coroutines-adv)
-5. [AndroidX](https://developer.android.com/jetpack/androidx)
+2. [Okhttp](https://square.github.io/okhttp/)
+3. [Coroutines](https://developer.android.com/kotlin/coroutines-adv)
+4. [AndroidX](https://developer.android.com/jetpack/androidx)
+5. [Room](https://developer.android.com/training/data-storage/room)
 
 ### Architecture
 
@@ -21,7 +22,7 @@ organizes file distribution by dividing the application into modular components,
 
 * MVP (Model-View-Presenter)
 
-![MVP](https://imgur.com/FZVCbdI)
+![MVP](https://i.imgur.com/FZVCbdI.png)
 
 ### Screenshot
-![Ss](https://imgur.com/4DqXCYq)
+![Ss](https://i.imgur.com/4DqXCYq.jpeg)
