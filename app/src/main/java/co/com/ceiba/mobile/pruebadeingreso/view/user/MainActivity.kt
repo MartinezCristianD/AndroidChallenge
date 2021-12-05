@@ -17,14 +17,14 @@ import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity() {
 
-    private val presenter: UserPresenter = UserPresenter()
+    private lateinit var presenter: UserPresenter
     private lateinit var usersList: ArrayList<User>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        presenter = UserPresenter(this)
         initData()
 
         val editTextSearch = findViewById<EditText>(R.id.editTextSearch)
@@ -56,8 +56,8 @@ class MainActivity : BaseActivity() {
     private fun initData() {
         setLoading(true)
         CoroutineScope(Dispatchers.Main).launch {
-            recyclerViewStart(presenter.getUsers())
             usersList = presenter.getUsers()
+            recyclerViewStart(usersList)
             setLoading(false)
         }
     }
