@@ -1,5 +1,6 @@
 package co.com.ceiba.mobile.pruebadeingreso.view.post
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,7 +42,16 @@ class PostActivity : BaseActivity() {
     private fun initPosts(userId: Int) {
         setLoading(true)
         CoroutineScope(Dispatchers.Main).launch {
-            recyclerViewStart(presenter.getPostById(userId))
+            val postListById = presenter.getPostById(userId)
+            if (postListById != null) {
+                recyclerViewStart(postListById)
+            } else {
+                val builder = AlertDialog.Builder(this@PostActivity)
+                builder.setTitle("Alert")
+                builder.setMessage(resources.getString(R.string.generic_error))
+                builder.show()
+
+            }
             setLoading(false)
         }
     }

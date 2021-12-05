@@ -10,7 +10,11 @@ class PostRepository {
     private val apiService = ApiConfiguration().getApiService()
 
     // Get the ArrayList of publications from the Api service through the user id
-    suspend fun getPostsListById(userId: Int): ArrayList<Post> = withContext(Dispatchers.IO) {
-        apiService.getPostById(userId)
+    suspend fun getPostsListById(userId: Int): ArrayList<Post>? = withContext(Dispatchers.IO) {
+        try {
+            apiService.getPostById(userId)
+        } catch (e: Exception) {
+            null
+        }
     }
 }
