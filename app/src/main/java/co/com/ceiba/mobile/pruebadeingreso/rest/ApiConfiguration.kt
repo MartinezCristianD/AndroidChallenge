@@ -8,7 +8,11 @@ import java.util.concurrent.TimeUnit
 
 class ApiConfiguration {
 
-    // Getting HttpClient needed to retrofit
+    /**
+     * Getting Getting HttpClient needed to retrofit
+     *
+     * @return OkHttpClient to retrofit configuration
+     * */
     private fun getOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
@@ -16,7 +20,11 @@ class ApiConfiguration {
             .build()
     }
 
-    // Consume json with retrofit
+    /**
+     * Consume json with retrofit
+     *
+     * @return retrofit Builder
+     * */
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(URL_BASE)
@@ -25,7 +33,11 @@ class ApiConfiguration {
             .build()
     }
 
-    // Create api service
+    /**
+     * Create api service
+     *
+     * @return Api service
+     * */
     fun getApiService(): ApiService {
         return getRetrofit().create(ApiService::class.java)
     }

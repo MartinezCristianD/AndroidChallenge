@@ -11,7 +11,11 @@ class UserRepository(
     private val dataBase: DataBase
 ) {
 
-    // Getting the ArrayList of user from Api service
+    /**
+     * Getting list of users deciding between local or the api service
+     *
+     * @return list with user  from Database or Local
+     * */
     suspend fun getUsersList(): ArrayList<User> = withContext(Dispatchers.IO) {
         val localUsers = dataBase.userDao().getAll()
         if (localUsers.isEmpty()) {
