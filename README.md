@@ -10,7 +10,6 @@
 
 ### Libraries
 1. [Retrofit](https://square.github.io/retrofit/)
-2. [SOAP 1.1](https://www.w3.org/TR/2000/NOTE-SOAP-20000508/)
 3. [Okhttp](https://square.github.io/okhttp/)
 4. [Coroutines](https://developer.android.com/kotlin/coroutines-adv)
 5. [AndroidX](https://developer.android.com/jetpack/androidx)
@@ -22,7 +21,7 @@ organizes file distribution by dividing the application into modular components,
 
 * MVP (Model-View-Presenter)
 
-[MVP](https://imgur.com/FZVCbdI)
+![MVP](https://imgur.com/FZVCbdI)
 
 ### Screenshot
-[Ss](https://imgur.com/4DqXCYq)
+![Ss](https://imgur.com/4DqXCYq)
