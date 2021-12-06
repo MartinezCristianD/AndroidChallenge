@@ -1,6 +1,5 @@
 package co.com.ceiba.mobile.pruebadeingreso.view.user
 
-
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
@@ -16,7 +15,6 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,7 +42,46 @@ class MainActivityTest {
                 isDisplayed()
             )
         )
-        appCompatEditText.perform(replaceText("c"), closeSoftKeyboard())
+        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard())
+
+        val editText = onView(
+            allOf(
+                withId(R.id.editTextSearch), withText("test"),
+                withParent(withParent(withId(R.id.textInputLayoutSearch))),
+                isDisplayed()
+            )
+        )
+        editText.check(matches(withText("test")))
+
+        val appCompatEditText2 = onView(
+            allOf(
+                withId(R.id.editTextSearch), withText("test"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.textInputLayoutSearch),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatEditText2.perform(replaceText(""))
+
+        val appCompatEditText3 = onView(
+            allOf(
+                withId(R.id.editTextSearch),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.textInputLayoutSearch),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatEditText3.perform(closeSoftKeyboard())
 
         val appCompatButton = onView(
             allOf(
@@ -64,104 +101,7 @@ class MainActivityTest {
         )
         appCompatButton.perform(click())
 
-        val appCompatButton2 = onView(
-            allOf(
-                withId(R.id.btn_view_post), withText("Ver publicaciones"),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.contentBtnViewPost),
-                        childAtPosition(
-                            withId(R.id.contentCard),
-                            3
-                        )
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatButton2.perform(click())
-
         pressBack()
-
-        pressBack()
-
-        val appCompatEditText2 = onView(
-            allOf(
-                withId(R.id.editTextSearch), withText("c"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.textInputLayoutSearch),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText2.perform(click())
-
-        val appCompatEditText3 = onView(
-            allOf(
-                withId(R.id.editTextSearch), withText("c"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.textInputLayoutSearch),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText3.perform(replaceText(""))
-
-        val appCompatEditText4 = onView(
-            allOf(
-                withId(R.id.editTextSearch),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.textInputLayoutSearch),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText4.perform(closeSoftKeyboard())
-
-        val textView = onView(
-            allOf(
-                withId(R.id.textinput_placeholder),
-                withParent(withParent(withId(R.id.textInputLayoutSearch))),
-                isDisplayed()
-            )
-        )
-        textView.check(matches(isDisplayed()))
-
-        val textView2 = onView(
-            allOf(
-                withId(R.id.textinput_placeholder),
-                withParent(withParent(withId(R.id.textInputLayoutSearch))),
-                isDisplayed()
-            )
-        )
-        textView2.check(matches(withText("c")))
-
-        val recyclerView = onView(
-            allOf(
-                withId(R.id.recyclerViewSearchResults),
-                withParent(
-                    allOf(
-                        withId(R.id.content),
-                        withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))
-                    )
-                ),
-                isDisplayed()
-            )
-        )
-        recyclerView.check(matches(isDisplayed()))
 
         val button = onView(
             allOf(
