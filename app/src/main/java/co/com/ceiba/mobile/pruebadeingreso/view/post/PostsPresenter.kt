@@ -1,10 +1,11 @@
 package co.com.ceiba.mobile.pruebadeingreso.view.post
 
 import co.com.ceiba.mobile.pruebadeingreso.repository.PostRepository
+import co.com.ceiba.mobile.pruebadeingreso.rest.ApiConfiguration
 
 class PostsPresenter {
 
-    private val postRepository = PostRepository()
+    private val postRepository = PostRepository(ApiConfiguration().getApiService())
 
     /**
      * Getting the list of user posts from userid
