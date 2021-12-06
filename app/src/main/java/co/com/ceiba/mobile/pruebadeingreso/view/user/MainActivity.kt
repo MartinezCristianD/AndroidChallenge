@@ -19,17 +19,17 @@ class MainActivity : BaseActivity() {
 
     private lateinit var presenter: UserPresenter
     private lateinit var usersList: ArrayList<User>
+    private lateinit var rvUsers: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter = UserPresenter(this)
-        initData()
-
         val editTextSearch = findViewById<EditText>(R.id.editTextSearch)
+        rvUsers = findViewById(R.id.recyclerViewSearchResults)
 
-        //adding a TextChangedListener to call a method whenever there is some change on the EditText
+        initData()
         editTextSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -43,7 +43,6 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    // Get filtered list
     fun filterSearch(s: String) {
         val filteredNames = ArrayList<User>()
         usersList.filterTo(filteredNames) {
@@ -63,11 +62,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun recyclerViewStart(userList: ArrayList<User>) {
-
-        val rvUsers = findViewById<RecyclerView>(R.id.recyclerViewSearchResults)
         rvUsers.layoutManager = LinearLayoutManager(this)
         val adapter = UserAdapter(userList)
         rvUsers.adapter = adapter
     }
-
 }

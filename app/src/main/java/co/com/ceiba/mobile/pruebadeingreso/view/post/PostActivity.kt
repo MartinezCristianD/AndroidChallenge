@@ -26,9 +26,7 @@ class PostActivity : BaseActivity() {
             val userInfo = intent.getParcelableExtra<User>(UserAdapter.USER_INFO)
             if (userInfo != null) {
                 setUserInfo(userInfo)
-                if (userInfo.id != null) {
-                    initPosts(userInfo.id)
-                }
+                initPosts(userInfo.id)
             }
         }
     }
@@ -47,7 +45,7 @@ class PostActivity : BaseActivity() {
                 recyclerViewStart(postListById)
             } else {
                 val builder = AlertDialog.Builder(this@PostActivity)
-                builder.setTitle("Alert")
+                builder.setTitle(resources.getString(R.string.generic_error_title))
                 builder.setMessage(resources.getString(R.string.generic_error))
                 builder.show()
 
