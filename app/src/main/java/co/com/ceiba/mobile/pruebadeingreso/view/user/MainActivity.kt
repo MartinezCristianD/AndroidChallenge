@@ -49,7 +49,11 @@ class MainActivity : BaseActivity() {
             it.name?.lowercase(Locale.getDefault())
                 ?.contains(s.lowercase(Locale.getDefault()), true) == true
         }
-        recyclerViewStart(filteredNames)
+        if (filteredNames.isNullOrEmpty()) {
+            rvUsers.adapter = EmptyAdapter(usersList)
+        } else {
+            recyclerViewStart(filteredNames)
+        }
     }
 
     private fun initData() {

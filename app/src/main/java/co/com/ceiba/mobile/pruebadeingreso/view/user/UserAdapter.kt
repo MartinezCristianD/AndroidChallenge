@@ -12,7 +12,7 @@ import co.com.ceiba.mobile.pruebadeingreso.models.User
 import co.com.ceiba.mobile.pruebadeingreso.view.post.PostActivity
 
 class UserAdapter(private var userList: ArrayList<User>) :
-    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+    RecyclerView.Adapter<co.com.ceiba.mobile.pruebadeingreso.view.user.UserAdapter.ViewHolder>() {
 
     //Constant creation
     companion object {
