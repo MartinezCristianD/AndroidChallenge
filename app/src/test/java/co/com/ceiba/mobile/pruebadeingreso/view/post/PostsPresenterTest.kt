@@ -1,8 +1,6 @@
-package co.com.ceiba.mobile.pruebadeingreso.view.user
+package co.com.ceiba.mobile.pruebadeingreso.view.post
 
-
-import co.com.ceiba.mobile.pruebadeingreso.persistence.DataBase
-import co.com.ceiba.mobile.pruebadeingreso.repository.UserRepository
+import co.com.ceiba.mobile.pruebadeingreso.repository.PostRepository
 import co.com.ceiba.mobile.pruebadeingreso.rest.ApiService
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
@@ -13,18 +11,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStreamReader
 
-class UserPresenterTest {
-
+class PostsPresenterTest {
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var repository: UserRepository
-
+    private lateinit var repository: PostRepository
 
     @Before
     fun setUp() {
         mockWebServer = MockWebServer()
         mockWebServer.start()
-        val dataBase = readFile("user_success_response.json")
-        mockWebServer.enqueue(MockResponse().setBody(dataBase))
 
         val retrofit = Retrofit.Builder()
             .baseUrl(mockWebServer.url(""))
@@ -33,7 +27,7 @@ class UserPresenterTest {
 
         val service = retrofit.create(ApiService::class.java)
 
-        repository = UserRepository(service, dataBase as DataBase)
+        repository = PostRepository(service)
     }
 
     private fun readFile(path: String): String {
@@ -44,14 +38,17 @@ class UserPresenterTest {
     }
 
     @Test
-    fun testReturnUsers() = runBlocking {
-        val successResponse = readFile("user_success_response.json")
+    fun getPostById() {
+        runBlocking {
+            val successResponse = readFile("user_success_response.json")
 
-        mockWebServer.enqueue(MockResponse().setBody(successResponse))
+            mockWebServer.enqueue(MockResponse().setBody(successResponse))
 
-        val response = repository.getUsersList()
+            val response = repository.getPostsListById(1)
 
-        assert(response.isNotEmpty())
+            mockWebServer.enqueue(MockResponse().setBody(successResponse))
 
+            assert(response?.isNotEmpty() == true)
+        }
     }
 }

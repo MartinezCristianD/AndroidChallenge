@@ -21,7 +21,6 @@ class MainActivity : BaseActivity() {
     private lateinit var usersList: ArrayList<User>
     private lateinit var rvUsers: RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +29,7 @@ class MainActivity : BaseActivity() {
         rvUsers = findViewById(R.id.recyclerViewSearchResults)
 
         initData()
+
         editTextSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
