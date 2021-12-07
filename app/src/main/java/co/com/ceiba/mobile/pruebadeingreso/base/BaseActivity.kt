@@ -2,7 +2,6 @@ package co.com.ceiba.mobile.pruebadeingreso.base
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
-import co.com.ceiba.mobile.pruebadeingreso.R
 
 abstract class BaseActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
@@ -15,7 +14,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * @return Show ProgressDialog
      * */
     fun setLoading(isLoading: Boolean) {
-        if (isLoading) {
+      /*  if (isLoading) {
             progressDialog = ProgressDialog.show(
                 this,
                 "",
@@ -25,6 +24,6 @@ abstract class BaseActivity : AppCompatActivity() {
             )
         } else {
             progressDialog.dismiss()
-        }
+        }*/
     }
 }

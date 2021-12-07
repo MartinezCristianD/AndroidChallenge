@@ -1,9 +1,9 @@
 package co.com.ceiba.mobile.pruebadeingreso.view.user
 
+
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -29,47 +29,9 @@ class MainActivityTest {
 
     @Test
     fun mainActivityTest() {
-        val appCompatEditText = onView(
-            allOf(
-                withId(R.id.editTextSearch),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.textInputLayoutSearch),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard())
 
         val editText = onView(
             allOf(
-                withId(R.id.editTextSearch), withText("test"),
-                withParent(withParent(withId(R.id.textInputLayoutSearch))),
-                isDisplayed()
-            )
-        )
-        editText.check(matches(withText("test")))
-
-        val appCompatEditText2 = onView(
-            allOf(
-                withId(R.id.editTextSearch), withText("test"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.textInputLayoutSearch),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText2.perform(replaceText(""))
-
-        val appCompatEditText3 = onView(
-            allOf(
                 withId(R.id.editTextSearch),
                 childAtPosition(
                     childAtPosition(
@@ -81,7 +43,11 @@ class MainActivityTest {
                 isDisplayed()
             )
         )
-        appCompatEditText3.perform(closeSoftKeyboard())
+        editText.perform(click())
+        editText.perform(replaceText("test"), closeSoftKeyboard())
+        editText.check(matches(withText("test")))
+        editText.perform(replaceText(""))
+        editText.perform(closeSoftKeyboard())
 
         val appCompatButton = onView(
             allOf(
@@ -99,23 +65,7 @@ class MainActivityTest {
                 isDisplayed()
             )
         )
-        appCompatButton.perform(click())
 
-        pressBack()
-
-        val button = onView(
-            allOf(
-                withId(R.id.btn_view_post), withText("VER PUBLICACIONES"),
-                withParent(
-                    allOf(
-                        withId(R.id.contentBtnViewPost),
-                        withParent(withId(R.id.contentCard))
-                    )
-                ),
-                isDisplayed()
-            )
-        )
-        button.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(
